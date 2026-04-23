@@ -1,0 +1,18 @@
+topics:
+  user:
+    approved: prod-user-approved
+    deleted: prod-user-deleted
+
+  product:
+    created: prod-product-created
+    updated: prod-product-updated
+    deleted: prod-product-deleted
+
+  trade:
+    created: prod-trade-created
+    completed: prod-trade-completed
+    cancelled: prod-trade-cancelled
+
+  chat:
+    room-created: prod-chat-room-created
+    message-sent: prod-chat-message-sent
