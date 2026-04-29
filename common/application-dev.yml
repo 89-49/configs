@@ -34,3 +34,6 @@ topics:
   chat:
     room-created: dev-chat-room-created
     message-sent: dev-chat-message-sent
+
+  reservation:
+    completed: dev-reservation-completed
