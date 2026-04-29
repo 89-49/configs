@@ -16,3 +16,6 @@ topics:
   chat:
     room-created: prod-chat-room-created
     message-sent: prod-chat-message-sent
+
+  reservation:
+    completed: prod-reservation-completed
