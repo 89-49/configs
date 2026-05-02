@@ -9,7 +9,7 @@ spring:
     username: {username:pgsg}
     password: {password:1234}
     driver-class-name: org.postgresql.Driver
-   jpa:
+  jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update  # 운영 시 validate, 개발 시 update
