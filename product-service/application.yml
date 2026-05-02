@@ -4,3 +4,15 @@ server:
 spring:
   application:
     name: product-service
+  datasource:
+    url: jdbc:postgresql://{host:localhost}:{port:5432}/{dbname:pgsg}
+    username: {username:pgsg}
+    password: {password:1234}
+    driver-class-name: org.postgresql.Driver
+   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update  # 운영 시 validate, 개발 시 update
+    properties:
+      hibernate:
+        format_sql: true
