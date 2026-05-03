@@ -4,21 +4,26 @@ server:
 spring:
   application:
     name: user-service
-
+    
+  main:
+    allow-bean-definition-overriding: true
+    
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/userdb}
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
-
+    
   jpa:
     hibernate:
-      ddl-auto: validate        # 운영: validate / 개발 초기: create
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-    show-sql: false             # 운영: false / 개발 중: true
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL-AUTO:validate}
+    show_sql: ${SPRING_JPA_SHOW-SQL:false}
+    # JPA가 준비된 이후 src/main/resources/data.sql 파일의 MASTER 등록 쿼리 실행
+    defer-datasource-initialization: true
+    
+  sql:
+    init:
+      mode: always
 
   data:
     redis:
