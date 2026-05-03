@@ -8,8 +8,6 @@ spring:
     gateway:
       server:
         webmvc:
-          default-filters:
-            - name: jwtGatewayFilter
           routes:
             - id: trace-server
               uri: lb://trace-server
