@@ -5,11 +5,11 @@ spring:
   application:
     name: gateway-server
   cloud:
-    config:
-      enabled: false
     gateway:
       server:
         webmvc:
+          default-filters:
+            - name: jwtGatewayFilter
           routes:
             - id: trace-server
               uri: lb://trace-server
