@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: ${SERVER_PORT:8081}
 
 spring:
   application:
@@ -16,8 +16,8 @@ spring:
     
   jpa:
     hibernate:
-      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL-AUTO:validate}
-    show_sql: ${SPRING_JPA_SHOW-SQL:false}
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:validate}
+    show_sql: ${SPRING_JPA_SHOW_SQL:false}
     # JPA가 준비된 이후 src/main/resources/data.sql 파일의 MASTER 등록 쿼리 실행
     defer-datasource-initialization: true
     
