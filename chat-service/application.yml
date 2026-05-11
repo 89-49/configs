@@ -7,7 +7,7 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${DB_URL:chat-db:5432/chat_db}
+    url: jdbc:postgresql://${DB_URL:pgsg-db:5432/chat-db}
     username: ${DB_USERNAME:pgsg-user}
     password: ${DB_PASSWORD:pgsg-password-1234}
 
