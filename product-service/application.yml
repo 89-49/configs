@@ -4,28 +4,6 @@ server:
 spring:
   application:
     name: product-service
-  datasource:
-    url: jdbc:postgresql://${host:localhost}:${port:5432}/${dbname:p_products}
-    username: ${db_user:pgsg}
-    password: "${db_pass:1234}"
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update  # 운영 시 validate, 개발 시 update
-    properties:
-      hibernate:
-        format_sql: true
-  sql:
-    init:
-      mode: always
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:13101/eureka/}
 
 management:
   endpoints:
