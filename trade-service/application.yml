@@ -4,3 +4,6 @@ server:
 spring:
   application:
     name: trade-service
+  kafka:
+    consumer:
+      group-id: trade-service

@@ -1,0 +1,9 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: reservation-service
+  kafka:
+    consumer:
+      group-id: reservation-service
