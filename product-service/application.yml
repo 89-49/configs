@@ -4,6 +4,21 @@ server:
 spring:
   application:
     name: product-service
+  datasource:
+    url: jdbc:postgresql://${host:localhost}:${port:5432}/${dbname:pgsg}
+    username: ${username}
+    password: "${password}"
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      mode: always
 
 management:
   zipkin:
