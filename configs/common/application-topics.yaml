@@ -19,3 +19,4 @@ topics:
 
   reservation:
     completed: prod-reservation-completed
+    cancelled: prod-reservation-buyercancelled
