@@ -44,12 +44,17 @@ spring:
               predicates:
                 - Path=/api/v1/chat/**
 
+info:
+  app:
+    name: gateway
+    hostname: ${HOSTNAME:localhost}
+
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
 
 jwt:
   secret: ${JWT_SECRET}           # 기본값 없음 — 반드시 환경변수로 주입(user-service와 동일한 값 사용)
