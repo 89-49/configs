@@ -1,0 +1,36 @@
+spring:
+  config:
+  # 로컬에 설치된 카프카를 사용하는 경우 대체
+  kafka:
+    bootstrap-servers: ${BOOTSTRAP_SERVERS:localhost:9092}
+    properties:
+      security.protocol: "PLAINTEXT"
+    ssl:
+      trust-store-location: ""
+      trust-store-password: ""
+
+management:
+  tracing:
+    sampling:
+      probability: 1
+topics:
+  user:
+    approved: dev-user-approved
+    deleted: dev-user-deleted
+
+  product:
+    created: dev-product-created
+    updated: dev-product-updated
+    deleted: dev-product-deleted
+
+  trade:
+    created: dev-trade-created
+    completed: dev-trade-completed
+    cancelled: dev-trade-cancelled
+
+  chat:
+    room-created: dev-chat-room-created
+    message-sent: dev-chat-message-sent
+
+  reservation:
+    completed: dev-reservation-completed
