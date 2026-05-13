@@ -8,6 +8,19 @@ spring:
       circuitbreaker:
         enabled: true
 
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: ${HOSTNAME:localhost}
+    hostname: ${HOSTNAME:localhost}
+    instance-id: "${HOSTNAME:${spring.application.name}}:${spring.application.name}:${server.port}"
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: "${EUREKA_SERVER_URL:http://34.64.58.121:8761/eureka/,http://34.64.104.174:8761/eureka/}"
+
 feign:
   client:
     default: # 공통 설정
