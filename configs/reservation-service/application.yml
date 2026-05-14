@@ -1,9 +1,84 @@
 server:
-  port: 8085
+  port: ${SERVER_PORT:8085}
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: reservation-service
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev,kafka}
+    include:
+      - error
+      - reservation-error
+
+  config:
+    import:
+      - "optional:file:.env[.properties]"
+      - "optional:configserver: "
+
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
   kafka:
-    consumer:
-      group-id: reservation-service
+    bootstrap-servers: ${KAFKA_HOST:34.64.35.152:9092,34.22.94.155:9092,34.50.28.59:9092}
+    ssl:
+      # Docker 환경(file:/app/...)과 로컬 환경(C:/...)을 환경 변수 하나로 제어합니다.
+      trust-store-location: ${KAFKA_SSL_PATH:file:/app/ssl/kafka.server.truststore.jks}
+      trust-store-password: ${KAFKA_SSL_TRUSTSTORE_PASSWORD}
+    properties:
+      security.protocol: SSL
+      ssl.endpoint.identification.algorithm: ""
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    defer-datasource-initialization: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, refresh
+
+jwt:
+  secret: ${JWT_SECRET}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: ${spring.cloud.client.ip-address:${SERVER_IP:localhost}}
+    instance-id: ${spring.cloud.client.ip-address:${SERVER_IP:localhost}}:${spring.application.name}:${server.port}
+  client:
+    enabled: ${EUREKA_ENABLED:true}
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://34.50.50.170:8761/eureka/}
+
+topics:
+  reservation:
+    completed: prod-reservation-completed
+    cancelled: prod-reservation-cancelled
+    failed : prod-reservation-tradefail
+  product:
+    created: prod-product-created
+    failed: prod-product-failed
