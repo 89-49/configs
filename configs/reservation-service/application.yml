@@ -54,10 +54,16 @@ spring:
     defer-datasource-initialization: true
 
 management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://34.64.247.238:9411/api/v2/spans # 도메인 대신 IP 권장
   endpoints:
     web:
       exposure:
-        include: health, info, refresh
+        include: health, info, refresh, prometheus
 
 jwt:
   secret: ${JWT_SECRET}
@@ -65,14 +71,15 @@ jwt:
 eureka:
   instance:
     prefer-ip-address: true
-    ip-address: ${spring.cloud.client.ip-address:${SERVER_IP:localhost}}
-    instance-id: ${spring.cloud.client.ip-address:${SERVER_IP:localhost}}:${spring.application.name}:${server.port}
+    ip-address: ${SERVER_IP:${spring.cloud.client.ip-address:localhost}}
+    instance-id: ${SERVER_IP:${spring.cloud.client.ip-address:localhost}}:${spring.application.name}:${server.port}
   client:
     enabled: ${EUREKA_ENABLED:true}
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_SERVER_URL:http://34.50.50.170:8761/eureka/}
+
 
 topics:
   reservation:
