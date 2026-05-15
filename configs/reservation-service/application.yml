@@ -80,6 +80,14 @@ eureka:
     service-url:
       defaultZone: ${EUREKA_SERVER_URL:http://34.50.50.170:8761/eureka/}
 
+logging:
+  file:
+    name: /app/logs/reservation-service.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 7
+
 
 topics:
   reservation:
