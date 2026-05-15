@@ -1,6 +1,7 @@
 topics:
   user:
     approved: prod-user-approved
+    updated: prod-user-updated
     deleted: prod-user-deleted
 
   product:
