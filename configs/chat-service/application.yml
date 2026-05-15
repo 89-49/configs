@@ -26,6 +26,21 @@ spring:
     pgsg-network:
       external: true
 
+  management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://34.47.69.9:9411/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: health, info, refresh, prometheus
+
 eureka:
   instance:
     prefer-ip-address: true
