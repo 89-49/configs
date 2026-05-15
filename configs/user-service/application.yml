@@ -34,3 +34,12 @@ jwt:
   secret: ${JWT_SECRET}           # 기본값 없음 — 반드시 환경변수로 주입
   access-token-expiration: ${JWT_ACCESS_EXPIRATION:1800000}   # 30분 (ms)
   refresh-token-expiration: ${JWT_REFRESH_EXPIRATION:604800000} # 7일 (ms)
+
+# 로그 파일의 생성 경로 & 로그 파일 관리 규칙 지정(로컬에서는 미사용)
+logging:
+  file:
+    name: ${LOG_FILE_PATH:}
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 7

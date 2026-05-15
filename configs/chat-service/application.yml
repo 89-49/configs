@@ -22,6 +22,29 @@ spring:
     open-in-view: false
     generate-ddl: true
 
-  networks:
-    pgsg-network:
-      external: true
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://34.47.69.9:9411/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: health, info, refresh, prometheus
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: ${SERVER_IP:${HOSTNAME:localhost}}
+    hostname: ${SERVER_IP:${HOSTNAME:localhost}}
+    instance-id: ${SERVER_IP:${HOSTNAME:${spring.application.name}}}:${spring.application.name}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://34.64.58.121:8761/eureka/,http://34.64.104.174:8761/eureka/}
