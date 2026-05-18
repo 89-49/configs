@@ -22,6 +22,16 @@ spring:
   kafka:
     ssl:
       trust-store-location: file:/app/ssl/kafka.server.truststore.jks
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: always   # prod에서는 never로 변경 후 DDL 직접 실행
+    properties:
+      org.quartz.scheduler.instanceName: ProductScheduler
+      org.quartz.scheduler.instanceId: AUTO
+      org.quartz.jobStore.isClustered: true
+      org.quartz.jobStore.clusterCheckinInterval: 10000
+      org.quartz.threadPool.threadCount: 5
 
 management:
   zipkin:
