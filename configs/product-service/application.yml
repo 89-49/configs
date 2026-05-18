@@ -32,6 +32,7 @@ spring:
       org.quartz.jobStore.isClustered: true
       org.quartz.jobStore.clusterCheckinInterval: 10000
       org.quartz.threadPool.threadCount: 5
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
 
 management:
   zipkin:
