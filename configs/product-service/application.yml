@@ -34,7 +34,7 @@ spring:
       org.quartz.threadPool.threadCount: 5
       org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
   elasticsearch:
-    uris: http://elasticsearch:9200  # docker-compose 서비스명으로 접근
+    uris: http://34.64.60.48:9200  
     connection-timeout: 5s
     socket-timeout: 30s
 
