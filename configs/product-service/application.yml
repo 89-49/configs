@@ -34,7 +34,7 @@ spring:
       org.quartz.threadPool.threadCount: 5
       org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
   elasticsearch:
-    uris: http://34.64.60.48:9200  
+    uris: http://10.178.0.5:9200  
     connection-timeout: 5s
     socket-timeout: 30s
 
