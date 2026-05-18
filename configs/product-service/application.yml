@@ -33,6 +33,10 @@ spring:
       org.quartz.jobStore.clusterCheckinInterval: 10000
       org.quartz.threadPool.threadCount: 5
       org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+  elasticsearch:
+    uris: http://elasticsearch:9200  # docker-compose 서비스명으로 접근
+    connection-timeout: 5s
+    socket-timeout: 30s
 
 management:
   zipkin:
